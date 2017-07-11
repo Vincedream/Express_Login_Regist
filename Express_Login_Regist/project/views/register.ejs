@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+    <body>
+    <h1>This is Login Page</h1>
+    <form action="/register" method="post" id="reg-form">
+        <label><span>用户名:</span><input type="text" name="username"></label>
+        <label><span>密码:</span><input type="password" name="password"></label>
+        <label><span>确认密码:</span><input type="password" name="password-confirm"></label>
+        <input type="submit" value="注册">
+    </form>
+    <a href="/login">已有账号？</a>
+    <script>
+        (function(g, undefined){
+            var form = document.querySelector('#reg-form'),
+                username = document.querySelector('input[name=username]'),
+                password = document.querySelector('input[name=password]'),
+                rePassword = document.querySelector('input[name=password-confirm]');
+
+            form.addEventListener('submit', function(e){
+                e = e || event;
+                e.preventDefault();
+                if(username.value == "" || password.value == "" ){
+                    alert('用户名或者密码不能为空');
+                    return false;
+                }
+
+                if(password.value == ''){
+                    alert('确认密码不能为空');
+                    return false;
+                }
+
+                if(password.value !== rePassword.value ){
+                    alert('两次密码输入不一致');
+                    return false;
+                }
+                this.submit();
+            }, false)
+        })(this);
+    </script>
+    </body>
+</html>
